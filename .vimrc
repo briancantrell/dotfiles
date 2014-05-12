@@ -145,7 +145,7 @@ runtime macros/matchit.vim
 "  source ~/.vim/vundles.vim
 "endif
 set nocompatible              " be iMproved, required
-filetype off                  " required
+filetype on                  " required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -160,7 +160,10 @@ Plugin 'tpope/vim-fugitive'
 Bundle 'mileszs/ack.vim'
 Bundle 'tjennings/git-grep-vim'
 Bundle 'YankRing.vim'
+Bundle 'majutsushi/tagbar'
 Bundle 'ervandew/supertab'
+Bundle 'AndrewRadev/splitjoin.vim'
+Bundle 'skalnik/vim-vroom'
 
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-rails'
@@ -196,6 +199,10 @@ map <leader><esc> :noh<cr>
 map <leader>n :NERDTreeToggle<cr>
 map <leader>f :Ack<Space>
 map <leader>/ :NERDComToggleComment
+nmap sj :SplitjoinSplit<cr>
+nmap sk :SplitjoinJoin<cr>
+map <C-F5> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+nmap <F8> :TagbarToggle<CR>
 
 "GitGrep - open up a git grep line, with a quote started for the search
 nnoremap ,gg :GitGrep ""<left>
