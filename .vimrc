@@ -123,7 +123,7 @@ set wildignore+=log/**
 set wildignore+=tmp/**
 set wildignore+=*.png,*.jpg,*.gif
 
-set runtimepath^=~/.vim/bundle/ctrlp.vim
+set runtimepath^=~/.vim/Bundle/ctrlp.vim
 let g:ctrlp_map = ',t' "noconflict with yankring
 nnoremap <silent> ,t :CtrlPMixed<CR>
 " ================ Scrolling ========================
@@ -148,7 +148,7 @@ set nocompatible              " be iMproved, required
 filetype on                  " required
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/.vim/Bundle/Vundle.vim
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
@@ -157,13 +157,16 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 Plugin 'tpope/vim-fugitive'
+Bundle 'thoughtbot/vim-rspec'
+Bundle 'tpope/vim-dispatch'
 Bundle 'mileszs/ack.vim'
 Bundle 'tjennings/git-grep-vim'
-Bundle 'YankRing.vim'
+Bundle 'yankring.vim'
 Bundle 'majutsushi/tagbar'
 Bundle 'ervandew/supertab'
-Bundle 'AndrewRadev/splitjoin.vim'
+Bundle 'andrewradev/splitjoin.vim'
 Bundle 'skalnik/vim-vroom'
+Bundle 'stefandtw/quickfix-reflector.vim'
 
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-rails'
@@ -181,35 +184,71 @@ Bundle 'scrooloose/nerdtree.git'
 Bundle 'scrooloose/nerdcommenter'
 
 "close vim if its the last open window
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:nerdtreetype") && b:nerdtreetype == "primary") | q | endif
 
-" All of your Plugins must be added before the following line
+" all of your plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 
 " =================================================
-" Some Important Custom Keymappings
+" some important custom keymappings
 " =================================================
-
+let g:rspec_command = "dispatch rspec {spec}"
+let g:rspec_runner = "os_x_iterm"
 let mapleader=","
-imap jk <Esc>
-imap kj <Esc>
+imap jk <esc>
+imap kj <esc>
+map <leader>sf :call runcurrejtspecfile()<cr>
+map <leader>s :call runnearestspec()<cr>
+map <leader>l :call runlastspec()<cr>
+map <leader>a :call runallspecs()<cr>
 
 map <leader><esc> :noh<cr>
-map <leader>n :NERDTreeToggle<cr>
-map <leader>f :Ack<Space>
-map <leader>/ :NERDComToggleComment
-nmap sj :SplitjoinSplit<cr>
-nmap sk :SplitjoinJoin<cr>
-map <C-F5> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
-nmap <F8> :TagbarToggle<CR>
+map <leader>n :nerdtreetoggle<cr>
+map <leader>f :ack<space>
+map <leader>/ :nerdcomtogglecomment
+map <leader>b :ctrlpbuffer<cr>
+nmap sj :splitjoinsplit<cr>
+nmap sk :splitjoinjoin<cr>
+map <c-f5> :!ctags -r --c++-kinds=+p --fields=+ias --extra=+q .<cr>
+nmap <f8> :tagbartoggle<cr>
 
-"GitGrep - open up a git grep line, with a quote started for the search
+"gitgrep - open up a git grep line, with a quote started for the search
 nnoremap ,gg :GitGrep ""<left>
 ""GitGrep Current Partial
 nnoremap ,gcp :GitGrepCurrentPartial<CR>
 "GitGrep Current File
 nnoremap ,gcf :call GitGrep(expand("%:t:r"))<CR>
+
+map <space> /
+map <c-space> ?
+
+command! Q q " Bind :Q to :q
+command! W w
+command! Qall qall
+
+" Let's be reasonable, shall we?
+nmap k gk
+nmap j gj
+
+" ,) or ,( Surround a word with (parens)
+"  The difference is in whether a space is put in
+map ,( ysiw(
+map ,) ysiw)
+vmap ,( c( <C-R>" )<ESC>
+vmap ,) c(<C-R>")<ESC>
+
+" ,[ Surround a word with [brackets]
+map ,] ysiw]
+map ,[ ysiw[
+vmap ,[ c[ <C-R>" ]<ESC>
+vmap ,] c[<C-R>"]<ESC>
+
+" ,{ Surround a word with {braces}
+map ,} ysiw}
+map ,{ ysiw{
+vmap ,} c{ <C-R>" }<ESC>
+vmap ,{ c{<C-R>"}<ESC>
 
 " EASIER SPLIT NAVIGATION CTRL+J instead of CTRL+W J
 nnoremap <C-J> <C-W><C-J>
@@ -217,9 +256,25 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+" ," Surround a word with "quotes"
+map ," ysiw"
+vmap ," c"<C-R>""<ESC>
+
+ " ,' Surround a word with 'single quotes'
+map ,' ysiw'
+
 " MORE NATURAL SPILT CREATION
 set splitbelow
 set splitright
+
+" Make nerdtree look nice
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+let g:NERDTreeWinSize = 30
+" Auto open nerd tree on startup
+let g:nerdtree_tabs_open_on_gui_startup = 0
+" Focus in the main content window
+let g:nerdtree_tabs_focus_on_files = 1
 
 " Toggle Background
 nmap <silent> <leader><leader>tb :exec &background == "dark"? "set background=light" : "set background=dark"<CR>
