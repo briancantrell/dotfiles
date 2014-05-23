@@ -211,7 +211,7 @@ map <leader>b :ctrlpbuffer<cr>
 nmap sj :splitjoinsplit<cr>
 nmap sk :splitjoinjoin<cr>
 map <c-f5> :!ctags -r --c++-kinds=+p --fields=+ias --extra=+q .<cr>
-nmap <f8> :tagbartoggle<cr>
+nmap <f8> :TagbarToggle<cr>
 
 "gitgrep - open up a git grep line, with a quote started for the search
 nnoremap ,gg :GitGrep ""<left>
