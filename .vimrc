@@ -29,6 +29,7 @@ set hidden
 "turn on syntax highlighting
 set t_Co=256
 syntax on
+syntax enable
 
 if has("gui_running")
   set background=dark
@@ -149,10 +150,11 @@ runtime macros/matchit.vim
 "  source ~/.vim/vundles.vim
 "endif
 set nocompatible              " be iMproved, required
-filetype off                  " required
+filetype off "must be off before vundle, then turned on?
+
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/Bundle/Vundle.vim
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
@@ -189,6 +191,7 @@ Bundle 'pangloss/vim-javascript'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-markdown'
+Bundle 'slim-template/vim-slim'
 
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-repeat'
@@ -202,7 +205,6 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:nerdtreetype") && b:nerdtree
 
 " all of your plugins must be added before the following line
 call vundle#end()            " required
-filetype plugin indent on    " required
 
 "set clipboard=unnamed
 
