@@ -145,7 +145,7 @@ runtime macros/matchit.vim
 "  source ~/.vim/vundles.vim
 "endif
 set nocompatible              " be iMproved, required
-filetype on                  " required
+filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/Bundle/Vundle.vim
@@ -204,10 +204,10 @@ map <leader>l :call runlastspec()<cr>
 map <leader>a :call runallspecs()<cr>
 
 map <leader><esc> :noh<cr>
-map <leader>n :nerdtreetoggle<cr>
+map <leader>n :NERDTreeToggle<cr>
+map <leader>m :NERDTreeFind<CR>
 map <leader>f :ack<space>
-map <leader>/ :nerdcomtogglecomment
-map <leader>b :ctrlpbuffer<cr>
+map <leader>b :CtrlPBuffer<cr>
 nmap sj :splitjoinsplit<cr>
 nmap sk :splitjoinjoin<cr>
 map <c-f5> :!ctags -r --c++-kinds=+p --fields=+ias --extra=+q .<cr>
@@ -384,3 +384,4 @@ function! AlternateForCurrentFile()
 endfunction
 nnoremap <leader><Space> :call OpenTestAlternate()<cr>
 
+au BufRead,BufNewFile *.hamlc set ft=haml
