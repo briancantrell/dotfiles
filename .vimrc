@@ -158,7 +158,12 @@ Plugin 'gmarik/Vundle.vim'
 
 Plugin 'tpope/vim-fugitive'
 Bundle 'thoughtbot/vim-rspec'
-Bundle 'tpope/vim-dispatch'
+"Bundle 'tpope/vim-dispatch'
+"Bundle 'kikijump/tslime.vim'
+Bundle 'jgdavey/tslime.vim'
+Bundle 'jgdavey/vim-turbux'
+let g:turbux_command_rspec = "spring rspec"
+
 Bundle 'mileszs/ack.vim'
 Bundle 'tjennings/git-grep-vim'
 Bundle 'yankring.vim'
@@ -190,18 +195,23 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:nerdtreetype") && b:nerdtree
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+"set clipboard=unnamed
+
 " =================================================
 " some important custom keymappings
 " =================================================
-let g:rspec_command = "dispatch rspec {spec}"
-let g:rspec_runner = "os_x_iterm"
+" old vim rspec setup
+"let g:rspec_command = "Dispatch rspec {spec}"
+"let g:rspec_runner = "os_x_iterm"
+"map <leader>sf :call RunCurrentSpecFile()<cr>
+"map <leader>s :call RunNearestSpec()<cr>
+"map <leader>l :call RunLastSpec()<cr>
+"map <leader>a :call RunAllSpecs()<cr>
+"
+
 let mapleader=","
 imap jk <esc>
 imap kj <esc>
-map <leader>sf :call runcurrejtspecfile()<cr>
-map <leader>s :call runnearestspec()<cr>
-map <leader>l :call runlastspec()<cr>
-map <leader>a :call runallspecs()<cr>
 
 map <leader><esc> :noh<cr>
 map <leader>n :NERDTreeToggle<cr>
@@ -219,6 +229,11 @@ nnoremap ,gg :GitGrep ""<left>
 nnoremap ,gcp :GitGrepCurrentPartial<CR>
 "GitGrep Current File
 nnoremap ,gcf :call GitGrep(expand("%:t:r"))<CR>
+
+let g:no_turbux_mappings = 1
+map <leader>r <Plug>SendTestToTmux
+map <leader>s <Plug>SendFocusedTestToTmux
+map <cr> <Plug>SendTestToTmux
 
 map <space> /
 map <c-space> ?
