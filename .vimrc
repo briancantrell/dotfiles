@@ -162,6 +162,7 @@ Bundle 'thoughtbot/vim-rspec'
 "Bundle 'kikijump/tslime.vim'
 Bundle 'jgdavey/tslime.vim'
 Bundle 'jgdavey/vim-turbux'
+Bundle 'christoomey/vim-tmux-navigator'
 let g:turbux_command_rspec = "spring rspec"
 
 Bundle 'mileszs/ack.vim'
@@ -233,7 +234,7 @@ nnoremap ,gcf :call GitGrep(expand("%:t:r"))<CR>
 let g:no_turbux_mappings = 1
 map <leader>r <Plug>SendTestToTmux
 map <leader>s <Plug>SendFocusedTestToTmux
-map <cr> <Plug>SendTestToTmux
+map <cr> <Plug>SendFocusedTestToTmux
 
 map <space> /
 map <c-space> ?
