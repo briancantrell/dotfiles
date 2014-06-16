@@ -234,7 +234,6 @@ nnoremap ,gcf :call GitGrep(expand("%:t:r"))<CR>
 let g:no_turbux_mappings = 1
 map <leader>r <Plug>SendTestToTmux
 map <leader>s <Plug>SendFocusedTestToTmux
-map <cr> <Plug>SendFocusedTestToTmux
 
 map <space> /
 map <c-space> ?
