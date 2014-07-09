@@ -31,8 +31,9 @@ set t_Co=256
 syntax on
 
 if has("gui_running")
-  set background=light
-  colorscheme github
+  set background=dark
+  colorscheme monokai
+  "colorscheme solarized
   set guioptions-=r
   set guioptions-=L
   set guioptions-=T
@@ -40,8 +41,10 @@ if has("gui_running")
   set columns=190
   "set guifont=Inconsolata\ XL:h15,Inconsolata:h18,Monaco:h15
 else
-  set background=dark
-  colorscheme wombat256mod
+  "let g:molokai_original = 1
+  "let g:rehash256 = 1
+  colorscheme jellybeans
+
 endif
 
 " Always have a status line
@@ -161,9 +164,12 @@ Bundle 'thoughtbot/vim-rspec'
 "Bundle 'tpope/vim-dispatch'
 "Bundle 'kikijump/tslime.vim'
 Bundle 'jgdavey/tslime.vim'
+Bundle 'tomasr/molokai'
+Bundle 'lsdr/monokai'
 Bundle 'jgdavey/vim-turbux'
 Bundle 'christoomey/vim-tmux-navigator'
-let g:turbux_command_rspec = "spring rspec"
+Bundle 'altercation/vim-colors-solarized'
+let g:turbux_command_rspec = "rspec"
 
 Bundle 'mileszs/ack.vim'
 Bundle 'tjennings/git-grep-vim'
@@ -252,6 +258,8 @@ map ,( ysiw(
 map ,) ysiw)
 vmap ,( c( <C-R>" )<ESC>
 vmap ,) c(<C-R>")<ESC>
+
+map ,c "+y
 
 " ,[ Surround a word with [brackets]
 map ,] ysiw]
