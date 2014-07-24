@@ -32,8 +32,9 @@ syntax on
 
 if has("gui_running")
   set background=dark
-  colorscheme monokai
+  "colorscheme monokai
   "colorscheme solarized
+  colorscheme gruvbox
   set guioptions-=r
   set guioptions-=L
   set guioptions-=T
@@ -169,6 +170,7 @@ Bundle 'lsdr/monokai'
 Bundle 'jgdavey/vim-turbux'
 Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'tpope/vim-surround'
 let g:turbux_command_rspec = "rspec"
 
 Bundle 'mileszs/ack.vim'
