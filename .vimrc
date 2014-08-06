@@ -195,6 +195,7 @@ Bundle 'slim-template/vim-slim'
 
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-repeat'
+Bundle 'tpope/vim-abolish'
 Bundle 'godlygeek/tabular'
 
 Bundle 'scrooloose/nerdtree.git'
@@ -233,6 +234,7 @@ nmap sj :splitjoinsplit<cr>
 nmap sk :splitjoinjoin<cr>
 map <c-f5> :!ctags -r --c++-kinds=+p --fields=+ias --extra=+q .<cr>
 nmap <f8> :TagbarToggle<cr>
+nnoremap <silent> K :GitGrep <cword><CR>
 
 "gitgrep - open up a git grep line, with a quote started for the search
 nnoremap ,gg :GitGrep ""<left>
