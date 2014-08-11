@@ -172,6 +172,7 @@ Bundle 'lsdr/monokai'
 Bundle 'jgdavey/vim-turbux'
 Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'rking/ag.vim'
 Bundle 'tpope/vim-surround'
 let g:turbux_command_rspec = "rspec"
 
@@ -238,6 +239,7 @@ nnoremap <silent> K :GitGrep <cword><CR>
 
 "gitgrep - open up a git grep line, with a quote started for the search
 nnoremap ,gg :GitGrep ""<left>
+nnoremap ,ga :Ag 
 ""GitGrep Current Partial
 nnoremap ,gcp :GitGrepCurrentPartial<CR>
 "GitGrep Current File
