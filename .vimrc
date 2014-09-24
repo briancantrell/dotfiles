@@ -127,6 +127,7 @@ set wildignore+=*.gem
 set wildignore+=log/**
 set wildignore+=tmp/**
 set wildignore+=*.png,*.jpg,*.gif
+set wildignore+=spec/fixtures/cassettes**
 
 set runtimepath^=~/.vim/Bundle/ctrlp.vim
 let g:ctrlp_map = ',t' "noconflict with yankring
@@ -163,7 +164,9 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 Plugin 'tpope/vim-fugitive'
+Bundle 'airblade/vim-gitgutter'
 Bundle 'thoughtbot/vim-rspec'
+Bundle 'moll/vim-bbye'
 "Bundle 'tpope/vim-dispatch'
 "Bundle 'kikijump/tslime.vim'
 Bundle 'jgdavey/tslime.vim'
@@ -174,6 +177,7 @@ Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'rking/ag.vim'
 Bundle 'tpope/vim-surround'
+Bundle 'gmarik/hlmatch.vim'
 let g:turbux_command_rspec = "rspec"
 
 Bundle 'mileszs/ack.vim'
@@ -231,6 +235,7 @@ map <leader>n :NERDTreeToggle<cr>
 map <leader>m :NERDTreeFind<CR>
 map <leader>f :ack<space>
 map <leader>b :CtrlPBuffer<cr>
+map <leader>a :Tabularize /
 nmap sj :splitjoinsplit<cr>
 nmap sk :splitjoinjoin<cr>
 map <c-f5> :!ctags -r --c++-kinds=+p --fields=+ias --extra=+q .<cr>
@@ -239,7 +244,7 @@ nnoremap <silent> K :GitGrep <cword><CR>
 
 "gitgrep - open up a git grep line, with a quote started for the search
 nnoremap ,gg :GitGrep ""<left>
-nnoremap ,ga :Ag 
+nnoremap ,ga :Ag
 ""GitGrep Current Partial
 nnoremap ,gcp :GitGrepCurrentPartial<CR>
 "GitGrep Current File
