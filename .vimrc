@@ -33,9 +33,9 @@ syntax enable
 
 if has("gui_running")
   set background=dark
-  "colorscheme monokai
+  colorscheme monokai
   "colorscheme solarized
-  colorscheme gruvbox
+  "colorscheme gruvbox
   set guioptions-=r
   set guioptions-=L
   set guioptions-=T
@@ -167,6 +167,7 @@ Plugin 'tpope/vim-fugitive'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'thoughtbot/vim-rspec'
 Bundle 'moll/vim-bbye'
+Bundle 'kien/ctrlp.vim'
 "Bundle 'tpope/vim-dispatch'
 "Bundle 'kikijump/tslime.vim'
 Bundle 'jgdavey/tslime.vim'
@@ -205,6 +206,7 @@ Bundle 'godlygeek/tabular'
 
 Bundle 'scrooloose/nerdtree.git'
 Bundle 'scrooloose/nerdcommenter'
+Bundle 'nanotech/jellybeans.vim'
 
 "close vim if its the last open window
 autocmd bufenter * if (winnr("$") == 1 && exists("b:nerdtreetype") && b:nerdtreetype == "primary") | q | endif
