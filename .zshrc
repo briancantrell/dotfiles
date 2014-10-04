@@ -101,6 +101,7 @@ alias postgres_log="tlf /usr/local/var/postgres/server.log"
 alias ngrok="ngrok -authtoken QumiCncE2s7JaLrsD3Oz"
 
 alias tml="tmux list-sessions"
+alias tmd="tmux detach"
 alias tma="tmux -2 attach -t $1"
 alias tmk="tmux kill-session -t $1"
 source ~/.bin/tmuxinator.zsh
