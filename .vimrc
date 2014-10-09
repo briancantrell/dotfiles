@@ -203,6 +203,7 @@ Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-abolish'
 Bundle 'godlygeek/tabular'
+Bundle 'scrooloose/syntastic'
 
 Bundle 'scrooloose/nerdtree.git'
 Bundle 'scrooloose/nerdcommenter'
