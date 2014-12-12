@@ -33,9 +33,9 @@ syntax enable
 
 if has("gui_running")
   set background=dark
-  colorscheme monokai
+  "colorscheme monokai
   "colorscheme solarized
-  "colorscheme gruvbox
+  colorscheme gruvbox
   set guioptions-=r
   set guioptions-=L
   set guioptions-=T
@@ -43,9 +43,13 @@ if has("gui_running")
   set columns=190
   "set guifont=Inconsolata\ XL:h15,Inconsolata:h18,Monaco:h15
 else
+  let g:rehash256 = 1
+  colorscheme molokai
   "let g:molokai_original = 1
-  "let g:rehash256 = 1
-  colorscheme jellybeans
+  "colorscheme jellybeans
+  "colorscheme gruvbox
+  "colorscheme monokai
+  "colorscheme wombat256mod
 
 endif
 
@@ -162,6 +166,10 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
+Plugin 'morhetz/gruvbox'
+Plugin 'tomasr/molokai'
+
+Plugin 'KevinGoodsell/vim-csexact'
 
 Plugin 'tpope/vim-fugitive'
 Bundle 'airblade/vim-gitgutter'
@@ -171,7 +179,6 @@ Bundle 'kien/ctrlp.vim'
 "Bundle 'tpope/vim-dispatch'
 "Bundle 'kikijump/tslime.vim'
 Bundle 'jgdavey/tslime.vim'
-Bundle 'tomasr/molokai'
 Bundle 'lsdr/monokai'
 Bundle 'jgdavey/vim-turbux'
 Bundle 'christoomey/vim-tmux-navigator'
@@ -246,7 +253,7 @@ nnoremap <silent> K :GitGrep <cword><CR>
 
 "gitgrep - open up a git grep line, with a quote started for the search
 nnoremap ,gg :GitGrep ""<left>
-nnoremap ,ga :Ag
+nnoremap ,ga :Ag ""<left>
 ""GitGrep Current Partial
 nnoremap ,gcp :GitGrepCurrentPartial<CR>
 "GitGrep Current File

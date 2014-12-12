@@ -1,7 +1,3 @@
-export RUBY_GC_MALLOC_LIMIT=90000000
-export RUBY_FREE_MIN=200000
-export RUBY_HEAP_MIN_SLOTS=40000
-
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
