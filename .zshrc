@@ -96,6 +96,9 @@ alias postgres_log="tlf /usr/local/var/postgres/server.log"
 
 alias ngrok="ngrok -authtoken QumiCncE2s7JaLrsD3Oz"
 
+alias flush_dns="dscacheutil -flushcache"
+alias edit_dns="vim /etc/hosts"
+
 alias tml="tmux list-sessions"
 alias tmd="tmux detach"
 alias tma="tmux -2 attach -t $1"
