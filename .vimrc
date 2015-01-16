@@ -105,6 +105,7 @@ set shiftwidth=2
 set softtabstop=2
 set tabstop=2
 set expandtab
+filetype indent on
 
 " Display tabs and trailing spaces visually
 set list listchars=tab:\ \ ,trail:·
