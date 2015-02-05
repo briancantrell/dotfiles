@@ -269,6 +269,7 @@ map <c-space> ?
 
 command! Q q " Bind :Q to :q
 command! W w
+command! Wq wq
 command! Qall qall
 
 " Let's be reasonable, shall we?
