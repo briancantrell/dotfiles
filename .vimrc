@@ -177,17 +177,15 @@ Bundle 'airblade/vim-gitgutter'
 Bundle 'thoughtbot/vim-rspec'
 Bundle 'moll/vim-bbye'
 Bundle 'kien/ctrlp.vim'
-"Bundle 'tpope/vim-dispatch'
-"Bundle 'kikijump/tslime.vim'
 Bundle 'jgdavey/tslime.vim'
 Bundle 'lsdr/monokai'
 Bundle 'jgdavey/vim-turbux'
+let g:turbux_command_rspec = "rspec"
 Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'rking/ag.vim'
 Bundle 'tpope/vim-surround'
 Bundle 'gmarik/hlmatch.vim'
-let g:turbux_command_rspec = "rspec"
 
 Bundle 'mileszs/ack.vim'
 Bundle 'tjennings/git-grep-vim'
@@ -202,6 +200,7 @@ Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-rails'
 Bundle 'itspriddle/vim-jquery'
 Bundle 'pangloss/vim-javascript'
+Bundle 'vim-scripts/JavaScript-Indent'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-markdown'
@@ -246,6 +245,7 @@ map <leader>m :NERDTreeFind<CR>
 map <leader>f :ack<space>
 map <leader>b :CtrlPBuffer<cr>
 map <leader>a :Tabularize /
+map <leader>ah :Tabularize /:\zs/r1c0l0<cr>
 nmap sj :splitjoinsplit<cr>
 nmap sk :splitjoinjoin<cr>
 map <c-f5> :!ctags -r --c++-kinds=+p --fields=+ias --extra=+q .<cr>
