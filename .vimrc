@@ -44,7 +44,13 @@ if has("gui_running")
   "set guifont=Inconsolata\ XL:h15,Inconsolata:h18,Monaco:h15
 else
   let g:rehash256 = 1
-  colorscheme molokai
+  "colorscheme 
+
+  "set automatically from .zshrc
+  let base16colorspace=256
+  colorscheme base16-default
+  "colorscheme base16-greenscreen
+
   "let g:molokai_original = 1
   "colorscheme jellybeans
   "colorscheme gruvbox
@@ -136,7 +142,8 @@ set wildignore+=spec/fixtures/cassettes**
 
 set runtimepath^=~/.vim/Bundle/ctrlp.vim
 let g:ctrlp_map = ',t' "noconflict with yankring
-nnoremap <silent> ,t :CtrlPMixed<CR>
+"nnoremap <silent> ,t :CtrlPMixed<CR>
+nnoremap <silent> ,y :CtrlPBufTag<CR>
 " ================ Scrolling ========================
 
 set scrolloff=8         "Start scrolling when we're 8 lines away from margins
@@ -167,33 +174,35 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
-Plugin 'morhetz/gruvbox'
+"Plugin 'morhetz/gruvbox'
 Plugin 'tomasr/molokai'
-
+Plugin 'chriskempson/base16-vim'
 Plugin 'KevinGoodsell/vim-csexact'
 
 Plugin 'tpope/vim-fugitive'
-Bundle 'airblade/vim-gitgutter'
+"Bundle 'airblade/vim-gitgutter'
 Bundle 'thoughtbot/vim-rspec'
-Bundle 'moll/vim-bbye'
+"Bundle 'moll/vim-bbye'
 Bundle 'kien/ctrlp.vim'
+"Bundle 'michaelavila/selecta.vim'
+Bundle 'thoughtbot/pick.vim'
 Bundle 'jgdavey/tslime.vim'
-Bundle 'lsdr/monokai'
+"Bundle 'lsdr/monokai'
 Bundle 'jgdavey/vim-turbux'
 let g:turbux_command_rspec = "rspec"
 Bundle 'christoomey/vim-tmux-navigator'
-Bundle 'altercation/vim-colors-solarized'
+"Bundle 'altercation/vim-colors-solarized'
 Bundle 'rking/ag.vim'
 Bundle 'tpope/vim-surround'
 Bundle 'gmarik/hlmatch.vim'
 
-Bundle 'mileszs/ack.vim'
-Bundle 'tjennings/git-grep-vim'
+"Bundle 'mileszs/ack.vim'
+"Bundle 'tjennings/git-grep-vim'
 Bundle 'yankring.vim'
 Bundle 'majutsushi/tagbar'
 Bundle 'ervandew/supertab'
 Bundle 'andrewradev/splitjoin.vim'
-Bundle 'skalnik/vim-vroom'
+"Bundle 'skalnik/vim-vroom'
 Bundle 'stefandtw/quickfix-reflector.vim'
 
 Bundle 'vim-ruby/vim-ruby'
@@ -213,7 +222,7 @@ Bundle 'godlygeek/tabular'
 
 Bundle 'scrooloose/nerdtree.git'
 Bundle 'scrooloose/nerdcommenter'
-Bundle 'nanotech/jellybeans.vim'
+"Bundle 'nanotech/jellybeans.vim'
 
 "close vim if its the last open window
 autocmd bufenter * if (winnr("$") == 1 && exists("b:nerdtreetype") && b:nerdtreetype == "primary") | q | endif
@@ -239,18 +248,43 @@ let mapleader=","
 imap jk <esc>
 imap kj <esc>
 
+"let SelectaIgnore = [".git/", "bin", "./spec/fixtures/cassettes", "./chef"]
+
+let g:ctrlp_map = ',,t'
+"nnoremap <silent> ,,t :CtrlPMixed<CR>
+"" Open a file
+ ""nnoremap <leader>t :SelectaFile<cr>
+
+"" As above, but will open in a :vsplit
+ "nnoremap <leader>v :SelectaVsplit<cr>
+
+"" Find all buffers that have been opened.
+"" Fuzzy select one of those. Open the selected file with :b.
+"nnoremap <leader>b :SelectaBuffer<cr>
+""
+"" " Find previously run commands.
+"" " Fuzzy select one of those. Run that command with :
+"nnoremap <leader>h :SelectaHistoryCommand<cr>
+
+nnoremap <Leader>t :call PickFile()<CR>
+nnoremap <Leader>s :call PickFileSplit()<CR>
+nnoremap <Leader>v :call PickFileVerticalSplit()<CR>
+"nnoremap <Leader>t :call PickFileTab()<CR>
+nnoremap <Leader>b :call PickBuffer()<CR>
+
+
 map <leader><esc> :noh<cr>
 map <leader>n :NERDTreeToggle<cr>
 map <leader>m :NERDTreeFind<CR>
 map <leader>f :ack<space>
-map <leader>b :CtrlPBuffer<cr>
+"map <leader>b :CtrlPBuffer<cr>
 map <leader>a :Tabularize /
-map <leader>ah :Tabularize /:\zs/r1c0l0<cr>
+"map <leader>ah :Tabularize /:\zs/r1c0l0<cr>
 nmap sj :splitjoinsplit<cr>
 nmap sk :splitjoinjoin<cr>
 map <c-f5> :!ctags -r --c++-kinds=+p --fields=+ias --extra=+q .<cr>
 nmap <f8> :TagbarToggle<cr>
-nnoremap <silent> K :GitGrep <cword><CR>
+nnoremap <silent> K :Ag <cword><CR>
 
 "gitgrep - open up a git grep line, with a quote started for the search
 nnoremap ,gg :GitGrep ""<left>
@@ -318,13 +352,11 @@ set splitright
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 let g:NERDTreeWinSize = 30
+let NERDTreeShowHidden = 1
 " Auto open nerd tree on startup
 let g:nerdtree_tabs_open_on_gui_startup = 0
 " Focus in the main content window
 let g:nerdtree_tabs_focus_on_files = 1
-
-" Toggle Background
-nmap <silent> <leader><leader>tb :exec &background == "dark"? "set background=light" : "set background=dark"<CR>
 
 if has("autocmd")
   " Restore cursor position
