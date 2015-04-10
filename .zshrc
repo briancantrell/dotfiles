@@ -7,6 +7,14 @@ ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 ZSH_THEME="robbyrussell"
 
+# Base16 Shell
+#OPTIONS: http://chriskempson.github.io/base16
+BASE16_SHELL="$HOME/.config/base16-shell/base16-default.dark.sh"
+#BASE16_SHELL="$HOME/.config/base16-shell/base16-railscasts.dark.sh"
+
+
+[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
