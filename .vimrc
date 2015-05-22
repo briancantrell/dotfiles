@@ -35,7 +35,7 @@ if has("gui_running")
   set background=dark
   "colorscheme monokai
   "colorscheme solarized
-  colorscheme gruvbox
+  "colorscheme gruvbox
   set guioptions-=r
   set guioptions-=L
   set guioptions-=T
