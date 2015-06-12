@@ -44,19 +44,10 @@ if has("gui_running")
   "set guifont=Inconsolata\ XL:h15,Inconsolata:h18,Monaco:h15
 else
   let g:rehash256 = 1
-  "colorscheme 
-
   "set automatically from .zshrc
   let base16colorspace=256
   colorscheme base16-default
   "colorscheme base16-greenscreen
-
-  "let g:molokai_original = 1
-  "colorscheme jellybeans
-  "colorscheme gruvbox
-  "colorscheme monokai
-  "colorscheme wombat256mod
-
 endif
 
 " Always have a status line
@@ -165,7 +156,6 @@ runtime macros/matchit.vim
 set nocompatible              " be iMproved, required
 filetype off "must be off before vundle, then turned on?
 
-
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -174,7 +164,6 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
-"Plugin 'morhetz/gruvbox'
 Plugin 'tomasr/molokai'
 Plugin 'chriskempson/base16-vim'
 Plugin 'KevinGoodsell/vim-csexact'
@@ -182,27 +171,20 @@ Plugin 'KevinGoodsell/vim-csexact'
 Plugin 'tpope/vim-fugitive'
 "Bundle 'airblade/vim-gitgutter'
 Bundle 'thoughtbot/vim-rspec'
-"Bundle 'moll/vim-bbye'
 Bundle 'kien/ctrlp.vim'
-"Bundle 'michaelavila/selecta.vim'
 Bundle 'thoughtbot/pick.vim'
 Bundle 'jgdavey/tslime.vim'
-"Bundle 'lsdr/monokai'
 Bundle 'jgdavey/vim-turbux'
 let g:turbux_command_rspec = "rspec"
 Bundle 'christoomey/vim-tmux-navigator'
-"Bundle 'altercation/vim-colors-solarized'
 Bundle 'rking/ag.vim'
 Bundle 'tpope/vim-surround'
 Bundle 'gmarik/hlmatch.vim'
 
-"Bundle 'mileszs/ack.vim'
-"Bundle 'tjennings/git-grep-vim'
 Bundle 'yankring.vim'
 Bundle 'majutsushi/tagbar'
 Bundle 'ervandew/supertab'
 Bundle 'andrewradev/splitjoin.vim'
-"Bundle 'skalnik/vim-vroom'
 Bundle 'stefandtw/quickfix-reflector.vim'
 
 Bundle 'vim-ruby/vim-ruby'
@@ -214,6 +196,7 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-markdown'
 Bundle 'slim-template/vim-slim'
+Bundle 'tomtom/tcomment_vim'
 
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-repeat'
@@ -221,8 +204,7 @@ Bundle 'tpope/vim-abolish'
 Bundle 'godlygeek/tabular'
 
 Bundle 'scrooloose/nerdtree.git'
-Bundle 'scrooloose/nerdcommenter'
-"Bundle 'nanotech/jellybeans.vim'
+
 
 "close vim if its the last open window
 autocmd bufenter * if (winnr("$") == 1 && exists("b:nerdtreetype") && b:nerdtreetype == "primary") | q | endif
@@ -285,6 +267,7 @@ nmap sk :splitjoinjoin<cr>
 map <c-f5> :!ctags -r --c++-kinds=+p --fields=+ias --extra=+q .<cr>
 nmap <f8> :TagbarToggle<cr>
 nnoremap <silent> K :Ag <cword><CR>
+nnoremap <leader>c :TComment
 
 "gitgrep - open up a git grep line, with a quote started for the search
 nnoremap ,gg :GitGrep ""<left>
