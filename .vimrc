@@ -258,7 +258,7 @@ nnoremap <Leader>b :call PickBuffer()<CR>
 map <leader><esc> :noh<cr>
 map <leader>n :NERDTreeToggle<cr>
 map <leader>m :NERDTreeFind<CR>
-map <leader>f :ack<space>
+map <leader>g :!ctags -R .<CR>
 "map <leader>b :CtrlPBuffer<cr>
 map <leader>a :Tabularize /
 "map <leader>ah :Tabularize /:\zs/r1c0l0<cr>
@@ -267,7 +267,7 @@ nmap sk :splitjoinjoin<cr>
 map <c-f5> :!ctags -r --c++-kinds=+p --fields=+ias --extra=+q .<cr>
 nmap <f8> :TagbarToggle<cr>
 nnoremap <silent> K :Ag <cword><CR>
-nnoremap <leader>c :TComment
+" nnoremap <leader>c :TComment
 
 "gitgrep - open up a git grep line, with a quote started for the search
 nnoremap ,gg :GitGrep ""<left>
