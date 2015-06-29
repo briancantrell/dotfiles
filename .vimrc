@@ -261,10 +261,11 @@ map <leader>m :NERDTreeFind<CR>
 map <leader>g :!ctags -R .<CR>
 "map <leader>b :CtrlPBuffer<cr>
 map <leader>a :Tabularize /
+"" fix indentation for whole file
+map <leader>i mzgg=G`z
 "map <leader>ah :Tabularize /:\zs/r1c0l0<cr>
 nmap sj :splitjoinsplit<cr>
 nmap sk :splitjoinjoin<cr>
-map <c-f5> :!ctags -r --c++-kinds=+p --fields=+ias --extra=+q .<cr>
 nmap <f8> :TagbarToggle<cr>
 nnoremap <silent> K :Ag <cword><CR>
 " nnoremap <leader>c :TComment
@@ -280,9 +281,6 @@ nnoremap ,gcf :call GitGrep(expand("%:t:r"))<CR>
 let g:no_turbux_mappings = 1
 map <leader>r <Plug>SendTestToTmux
 map <leader>s <Plug>SendFocusedTestToTmux
-
-map <space> /
-map <c-space> ?
 
 command! Q q " Bind :Q to :q
 command! W w
