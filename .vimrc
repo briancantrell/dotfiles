@@ -164,7 +164,6 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
-Plugin 'tomasr/molokai'
 Plugin 'chriskempson/base16-vim'
 Plugin 'KevinGoodsell/vim-csexact'
 
@@ -204,6 +203,7 @@ Bundle 'tpope/vim-abolish'
 Bundle 'godlygeek/tabular'
 
 Bundle 'scrooloose/nerdtree.git'
+Bundle 'terryma/vim-multiple-cursors'
 
 
 "close vim if its the last open window
@@ -269,6 +269,7 @@ nmap sk :splitjoinjoin<cr>
 nmap <f8> :TagbarToggle<cr>
 nnoremap <silent> K :Ag <cword><CR>
 " nnoremap <leader>c :TComment
+nnoremap <leader>src :source ~/.vimrc<cr>
 
 "gitgrep - open up a git grep line, with a quote started for the search
 nnoremap ,gg :GitGrep ""<left>
@@ -426,7 +427,7 @@ function! AlternateForCurrentFile()
   let new_file = current_file
   let in_spec = match(current_file, '^spec/') != -1
   let going_to_spec = !in_spec
-  let in_app = match(current_file, '\<controllers\>') != -1 || match(current_file, '\<models\>') != -1 || match(current_file, '\<views\>') != -1 || match(current_file, '\<helpers\>') != -1 || match(current_file, '\<workers\>') != -1 || match(current_file, '\<policies\>') != -1
+  let in_app = match(current_file, '\<controllers\>') != -1 || match(current_file, '\<models\>') != -1 || match(current_file, '\<views\>') != -1 || match(current_file, '\<helpers\>') != -1 || match(current_file, '\<workers\>') != -1 || match(current_file, '\<policies\>') != -1 || match(current_file, '\<presenters\>') != -1
   if going_to_spec
     if in_app
       let new_file = substitute(new_file, '^app/', '', '')
