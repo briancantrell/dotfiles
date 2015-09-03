@@ -205,6 +205,7 @@ Bundle 'godlygeek/tabular'
 Bundle 'scrooloose/nerdtree.git'
 Bundle 'terryma/vim-multiple-cursors'
 
+" Plugin 'ryanoasis/vim-devicons'
 
 "close vim if its the last open window
 autocmd bufenter * if (winnr("$") == 1 && exists("b:nerdtreetype") && b:nerdtreetype == "primary") | q | endif
@@ -254,6 +255,7 @@ nnoremap <Leader>v :call PickFileVerticalSplit()<CR>
 "nnoremap <Leader>t :call PickFileTab()<CR>
 nnoremap <Leader>b :call PickBuffer()<CR>
 
+nnoremap <Leader>lc :CoffeeLint! <CR> :cwindow <CR>
 
 map <leader><esc> :noh<cr>
 map <leader>n :NERDTreeToggle<cr>
