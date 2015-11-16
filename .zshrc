@@ -59,7 +59,12 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin
-export PATH="$HOME/.rbenv/shims:$HOME/bin:$PATH"
+
+## Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+eval "$(direnv hook zsh)"
+
+export PATH="$HOME/.rbenv/shims:$HOME/.rbenv/bin:$HOME/bin:$PATH"
 eval "$(rbenv init -)"
 
 bindkey -v
@@ -116,9 +121,6 @@ source ~/.bin/tmuxinator.zsh
 
 
 
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-eval "$(direnv hook zsh)"
 
 
 _ag() {
