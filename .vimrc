@@ -181,7 +181,7 @@ Bundle 'tpope/vim-surround'
 Bundle 'gmarik/hlmatch.vim'
 
 Bundle 'yankring.vim'
-Bundle 'majutsushi/tagbar'
+" Bundle 'majutsushi/tagbar'
 Bundle 'ervandew/supertab'
 Bundle 'andrewradev/splitjoin.vim'
 Bundle 'stefandtw/quickfix-reflector.vim'
@@ -249,6 +249,7 @@ let g:ctrlp_map = ',,t'
 "" " Fuzzy select one of those. Run that command with :
 "nnoremap <leader>h :SelectaHistoryCommand<cr>
 
+nmap <silent> // :nohlsearch<CR>
 nnoremap <Leader>t :call PickFile()<CR>
 nnoremap <Leader>s :call PickFileSplit()<CR>
 nnoremap <Leader>v :call PickFileVerticalSplit()<CR>
@@ -257,7 +258,6 @@ nnoremap <Leader>b :call PickBuffer()<CR>
 
 nnoremap <Leader>lc :CoffeeLint! <CR> :cwindow <CR>
 
-map <leader><esc> :noh<cr>
 map <leader>n :NERDTreeToggle<cr>
 map <leader>m :NERDTreeFind<CR>
 map <leader>g :!ctags -R .<CR>
@@ -274,12 +274,12 @@ nnoremap <silent> K :Ag <cword><CR>
 nnoremap <leader>src :source ~/.vimrc<cr>
 
 "gitgrep - open up a git grep line, with a quote started for the search
-nnoremap ,gg :GitGrep ""<left>
+" nnoremap ,gg :GitGrep ""<left>
 nnoremap ,ga :Ag ""<left>
 ""GitGrep Current Partial
-nnoremap ,gcp :GitGrepCurrentPartial<CR>
+" nnoremap ,gcp :GitGrepCurrentPartial<CR>
 "GitGrep Current File
-nnoremap ,gcf :call GitGrep(expand("%:t:r"))<CR>
+" nnoremap ,gcf :call GitGrep(expand("%:t:r"))<CR>
 
 let g:no_turbux_mappings = 1
 map <leader>r <Plug>SendTestToTmux
