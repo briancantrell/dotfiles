@@ -65,6 +65,7 @@ eval "$(rbenv init -)"
 bindkey -v
 bindkey '\e[3~' delete-char
 bindkey '^R' history-incremental-search-backward
+bindkey '^B' clear-screen
 
 function deploy(){cap deploy -S rails_env="staging" -S branch=$@}
 export EDITOR="vim"
