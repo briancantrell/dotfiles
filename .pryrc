@@ -5,7 +5,7 @@ Pry.editor = 'vim'
 Pry.commands.alias_command 'c', 'continue' rescue nil
 Pry.commands.alias_command 's', 'step' rescue nil
 Pry.commands.alias_command 'n', 'next' rescue nil
-Pry.commands.alias_command 'b', 'breakpoint'
+Pry.commands.alias_command 'b', 'break'
 
 # === CUSTOM PROMPT ===
 # This prompt shows the ruby version (useful for rbenv)
