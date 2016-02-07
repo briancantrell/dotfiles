@@ -67,6 +67,7 @@ export PATH="/usr/local/heroku/bin:$PATH"
 
 export PATH="$HOME/.rbenv/shims:$HOME/.rbenv/bin:$HOME/bin:$PATH"
 eval "$(rbenv init -)"
+export PATH="./bin:$PATH"
 
 bindkey -v
 bindkey '\e[3~' delete-char
