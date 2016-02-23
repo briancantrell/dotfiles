@@ -36,18 +36,15 @@ if has("gui_running")
   "colorscheme monokai
   "colorscheme solarized
   "colorscheme gruvbox
+  colorscheme monokai
   set guioptions-=r
   set guioptions-=L
   set guioptions-=T
   set lines=60
   set columns=190
-  "set guifont=Inconsolata\ XL:h15,Inconsolata:h18,Monaco:h15
 else
-  let g:rehash256 = 1
-  "set automatically from .zshrc
   let base16colorspace=256
-  colorscheme base16-default
-  "colorscheme base16-greenscreen
+  colorscheme base16-pop
 endif
 
 " Always have a status line

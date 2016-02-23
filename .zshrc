@@ -9,7 +9,9 @@ ZSH_THEME="robbyrussell"
 
 # Base16 Shell
 #OPTIONS: http://chriskempson.github.io/base16
-BASE16_SHELL="$HOME/.config/base16-shell/base16-default.dark.sh"
+# BASE16_SHELL="$HOME/.config/base16-shell/base16-default.dark.sh"
+# BASE16_SHELL="$HOME/.config/base16-shell/base16-default.dark.sh"
+BASE16_SHELL="$HOME/.config/base16-shell/base16-pop.dark.sh"
 #BASE16_SHELL="$HOME/.config/base16-shell/base16-railscasts.dark.sh"
 
 
@@ -80,7 +82,7 @@ export EDITOR="vim"
 
 
 # unix
-alias tmux="TERM=screen-256color-bce tmux"
+# alias tmux="TERM=screen-256color-bce tmux"
 alias tlf="tail -f"
 alias ln='ln -v'
 alias mkdir='mkdir -p'
@@ -110,6 +112,8 @@ alias postgres_log="tlf /usr/local/var/postgres/server.log"
 
 alias ngrok="ngrok -authtoken QumiCncE2s7JaLrsD3Oz"
 
+alias "eb deploy staging"="eb deploy staging && eb deploy staging"
+
 alias flush_dns="dscacheutil -flushcache"
 alias edit_dns="vim /etc/hosts"
 
@@ -117,10 +121,13 @@ alias tml="tmux list-sessions"
 alias tmd="tmux detach"
 alias tma="tmux -2 attach -t $1"
 alias tmk="tmux kill-session -t $1"
-source ~/.bin/tmuxinator.zsh
+# source ~/.bin/tmuxinator.zsh
 
 
 
+### Added by the Heroku Toolbelt
+export PATH="./bin:/usr/local/heroku/bin:$PATH"
+# eval "$(direnv hook zsh)"
 
 
 _ag() {
