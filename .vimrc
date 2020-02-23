@@ -33,9 +33,6 @@ syntax enable
 
 if has("gui_running")
   set background=dark
-  "colorscheme monokai
-  "colorscheme solarized
-  "colorscheme gruvbox
   colorscheme monokai
   set guioptions-=r
   set guioptions-=L
@@ -162,7 +159,6 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 Plugin 'chriskempson/base16-vim'
-Plugin 'KevinGoodsell/vim-csexact'
 
 Plugin 'tpope/vim-fugitive'
 "Bundle 'airblade/vim-gitgutter'
@@ -178,15 +174,14 @@ Bundle 'tpope/vim-surround'
 Bundle 'gmarik/hlmatch.vim'
 
 Bundle 'yankring.vim'
-" Bundle 'majutsushi/tagbar'
 Bundle 'ervandew/supertab'
 Bundle 'andrewradev/splitjoin.vim'
 Bundle 'stefandtw/quickfix-reflector.vim'
 
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-rails'
-Bundle 'itspriddle/vim-jquery'
 Bundle 'pangloss/vim-javascript'
+Bundle 'mxw/vim-jsx'
 Bundle 'vim-scripts/JavaScript-Indent'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'tpope/vim-haml'
