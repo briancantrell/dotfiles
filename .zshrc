@@ -1,56 +1,13 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
 ZSH_THEME="robbyrussell"
 
-# Base16 Shell
-#OPTIONS: http://chriskempson.github.io/base16
-# BASE16_SHELL="$HOME/.config/base16-shell/base16-default.dark.sh"
-# BASE16_SHELL="$HOME/.config/base16-shell/base16-default.dark.sh"
-BASE16_SHELL="$HOME/.config/base16-shell/base16-pop.dark.sh"
-#BASE16_SHELL="$HOME/.config/base16-shell/base16-railscasts.dark.sh"
-
-
-[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
-
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-# Set to this to use case-sensitive completion
-# CASE_SENSITIVE="true"
-
-# Uncomment this to disable bi-weekly auto-update checks
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment to change how often before auto-updates occur? (in days)
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment following line if you want to disable colors in ls
-# DISABLE_LS_COLORS="true"
-
-# Uncomment following line if you want to disable autosetting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment following line if you want to disable command autocorrection
-# DISABLE_CORRECTION="true"
-
-# Uncomment following line if you want red dots to be displayed while waiting for completion
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment following line if you want to disable marking untracked files under
-# VCS as dirty. This makes repository status check for large repositories much,
-# much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment following line if you want to  shown in the command execution time stamp
-# in the history command output. The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|
-# yyyy-mm-dd
-# HIST_STAMPS="mm/dd/yyyy"
+BASE16_SHELL=$HOME/.config/base16-shell/
+[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+base16_pop
+# [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+#
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -59,13 +16,12 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
+source $BASE16_SHELL
+
 # User configuration
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin"
-
-## Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-
 export PATH="$HOME/.rbenv/shims:$HOME/.rbenv/bin:$HOME/bin:$PATH"
+
 eval "$(rbenv init -)"
 export PATH="./bin:$PATH"
 
@@ -74,14 +30,8 @@ bindkey '\e[3~' delete-char
 bindkey '^R' history-incremental-search-backward
 bindkey '^B' clear-screen
 
-function deploy(){cap deploy -S rails_env="staging" -S branch=$@}
 export EDITOR="vim"
 
-#export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"
-# export MANPATH="/usr/local/man:$MANPATH"
-
-
-# unix
 # alias tmux="TERM=screen-256color-bce tmux"
 alias tlf="tail -f"
 alias ln='ln -v'
@@ -90,45 +40,19 @@ alias l='ls'
 alias ll='ls -al'
 alias lh='ls -Alh'
 
-# git
-# alias git="hub"
 alias g="git"
-
-#rails
-alias migrate="rake db:migrate && rake db:test:prepare"
-
-alias spec="spring rspec"
-alias ks="ps aux | grep spring | awk '{print $2}' | xargs kill -9"
 
 # Bundler
 alias b="bundle"
 alias be="bundle exec"
 
-# postgres
-alias postgres_start="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
-alias postgres_stop="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
-alias postgres_status="pg_ctl -D /usr/local/var/postgres status"
-alias postgres_log="tlf /usr/local/var/postgres/server.log"
-
-alias ngrok="ngrok -authtoken QumiCncE2s7JaLrsD3Oz"
-
-alias "eb deploy staging"="eb deploy staging && eb deploy staging"
-
 alias flush_dns="dscacheutil -flushcache"
-alias edit_dns="vim /etc/hosts"
 
 alias tml="tmux list-sessions"
 alias tmd="tmux detach"
 alias tma="tmux -2 attach -t $1"
 alias tmk="tmux kill-session -t $1"
 # source ~/.bin/tmuxinator.zsh
-
-
-
-### Added by the Heroku Toolbelt
-export PATH="./bin:/usr/local/heroku/bin:$PATH"
-# eval "$(direnv hook zsh)"
-
 
 _ag() {
   if (( CURRENT == 2 )); then
@@ -138,3 +62,45 @@ _ag() {
 
 compdef _ag ag
 
+export PATH="/usr/local/opt/postgresql@9.6/bin:/usr/local/opt/python/libexec/bin:$PATH"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# place this after nvm initialization!
+autoload -U add-zsh-hook
+load-nvmrc() {
+  local node_version="$(nvm version)"
+  local nvmrc_path="$(nvm_find_nvmrc)"
+
+  if [ -n "$nvmrc_path" ]; then
+    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+
+    if [ "$nvmrc_node_version" = "N/A" ]; then
+      nvm install
+    elif [ "$nvmrc_node_version" != "$node_version" ]; then
+      nvm use
+    fi
+  elif [ "$node_version" != "$(nvm version default)" ]; then
+    echo "Reverting to nvm default version"
+    nvm use default
+  fi
+}
+add-zsh-hook chpwd load-nvmrc
+load-nvmrc
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /Users/brian/.nvm/versions/node/v9.10.1/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/brian/.nvm/versions/node/v9.10.1/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /Users/brian/.nvm/versions/node/v9.10.1/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/brian/.nvm/versions/node/v9.10.1/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
+# tabtab source for slss package
+# uninstall by removing these lines or running `tabtab uninstall slss`
+[[ -f /Users/brian/.nvm/versions/node/v9.10.1/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh ]] && . /Users/brian/.nvm/versions/node/v9.10.1/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh
+
+export PATH="$(brew --prefix qt@5.5)/bin:$PATH"
+
+# Added by serverless binary installer
+export PATH="$HOME/.serverless/bin:$PATH"
