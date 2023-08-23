@@ -29,6 +29,7 @@ set hidden
 "turn on syntax highlighting
 set t_Co=256
 syntax on
+set re=0
 syntax enable
 
 if has("gui_running")
@@ -160,8 +161,6 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'chriskempson/base16-vim'
 
-Plugin 'tpope/vim-fugitive'
-"Bundle 'airblade/vim-gitgutter'
 Bundle 'thoughtbot/vim-rspec'
 Bundle 'kien/ctrlp.vim'
 Bundle 'thoughtbot/pick.vim'
@@ -183,15 +182,11 @@ Bundle 'tpope/vim-rails'
 Bundle 'pangloss/vim-javascript'
 Bundle 'mxw/vim-jsx'
 Bundle 'vim-scripts/JavaScript-Indent'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-markdown'
-Bundle 'slim-template/vim-slim'
 Bundle 'tomtom/tcomment_vim'
 
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-abolish'
 Bundle 'godlygeek/tabular'
 
 Bundle 'scrooloose/nerdtree.git'
